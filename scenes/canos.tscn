@@ -22,7 +22,7 @@ script = ExtResource("1_oa1c0")
 [node name="decima" type="StaticBody2D" parent="."]
 position = Vector2(0, -304)
 rotation = 3.14159
-collision_layer = 2
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="decima"]
 texture = ExtResource("1_cswro")
@@ -33,7 +33,7 @@ shape = SubResource("RectangleShape2D_at1tf")
 
 [node name="debaixo" type="StaticBody2D" parent="."]
 position = Vector2(0, 304)
-collision_layer = 2
+collision_layer = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="debaixo"]
 texture = ExtResource("1_cswro")
