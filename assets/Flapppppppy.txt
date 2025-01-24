@@ -1,0 +1,62 @@
+#shader code
+
+
+
+shader_type canvas_item;
+
+uniform float speed = 0.5;
+
+void fragment() {
+	vec2 newuv = UV;
+    newuv.x += TIME * speed;
+    vec4 c = texture(TEXTURE, newuv);
+    COLOR = c;
+}
+
+
+#rotate bird
+
+func rotate_bird():
+	# Rotate downwards when falling
+	if velocity.y > 0 and rad_to_deg(rotation) < 90:
+		rotation += 2 * deg_to_rad(1.4)
+	# Rotate upwards when rising
+	elif velocity.y < 0 and rad_to_deg(rotation) > -30:
+		rotation -= 2 * deg_to_rad(1.2)
+
+
+
+
+# Pipes
+
+var velocity = Vector2.ZERO
+var speed = 90
+const direction = Vector2.LEFT
+var didEmitSignal = false
+signal scoreUp
+
+func _physics_process(delta):
+	if Global.isPlaying:
+		velocity = direction * speed
+		position += velocity * delta
+
+func _on_body_entered(body):
+	if body.is_in_group("bird"):
+		if !didEmitSignal:
+			didEmitSignal = true
+			emit_signal("scoreUp")
+
+
+
+
+# MAIN
+
+func pipesGenerator():
+	if birdIsDead == false and didStartGame:
+		var pipe = preload("res://scenes/pipes.tscn").instantiate()
+		pipe.position = Vector2(320, randf_range(95, 305))
+		pipe.connect("scoreUp", scoreUp)
+		call_deferred("add_child", pipe)
+		timer.start(2.0)
+
+

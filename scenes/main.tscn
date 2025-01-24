@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmge2r1bwevxw"]
+
+[ext_resource type="Texture2D" uid="uid://bqbb1tdnaygmu" path="res://assets/background-day.png" id="1_0bx4q"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_u01ec"]
+[ext_resource type="Texture2D" uid="uid://dt4xggsrimvln" path="res://assets/taptap.png" id="2_q5b5q"]
+[ext_resource type="Texture2D" uid="uid://dbdve3nnsdxbs" path="res://assets/gameover.png" id="3_e1eiq"]
+[ext_resource type="FontFile" uid="uid://f6qfqed8d3r" path="res://assets/Kenney Blocks.ttf" id="4_h6dc5"]
+[ext_resource type="PackedScene" uid="uid://dann4f58ri74a" path="res://scenes/player_bird.tscn" id="5_i033j"]
+[ext_resource type="PackedScene" uid="uid://cx0qxqh0yug6t" path="res://scenes/floor.tscn" id="6_1txsv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqqan"]
+font = ExtResource("4_h6dc5")
+font_size = 25
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3opg"]
+size = Vector2(318, 529)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8df8o"]
+size = Vector2(64, 438.5)
+
+[node name="Main" type="Node2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_u01ec")
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="bg" type="TextureRect" parent="background"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_0bx4q")
+
+[node name="tutorial" type="TextureRect" parent="."]
+offset_left = 52.0
+offset_top = 143.0
+offset_right = 236.0
+offset_bottom = 252.0
+texture = ExtResource("2_q5b5q")
+
+[node name="GameOver" type="TextureRect" parent="."]
+visible = false
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 242.0
+offset_bottom = 82.0
+texture = ExtResource("3_e1eiq")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 94.0
+offset_top = 97.0
+offset_right = 200.0
+offset_bottom = 136.0
+text = "0"
+label_settings = SubResource("LabelSettings_gqqan")
+
+[node name="PlayerBird" parent="." instance=ExtResource("5_i033j")]
+position = Vector2(98, 286)
+
+[node name="Floor" parent="." instance=ExtResource("6_1txsv")]
+position = Vector2(146, 459)
+
+[node name="Touch" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Touch"]
+position = Vector2(143, 254)
+shape = SubResource("RectangleShape2D_o3opg")
+
+[node name="restart_button" type="Button" parent="."]
+visible = false
+offset_left = 103.0
+offset_top = 398.0
+offset_right = 178.0
+offset_bottom = 429.0
+text = "RESTART"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.3
+one_shot = true
+
+[node name="canos_clear" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="canos_clear"]
+position = Vector2(-49, 206)
+shape = SubResource("RectangleShape2D_8df8o")
+
+[connection signal="Didtouch" from="." to="PlayerBird" method="_on_main_didtouch"]
+[connection signal="Justdied" from="PlayerBird" to="." method="_on_player_bird_justdied"]
+[connection signal="input_event" from="Touch" to="." method="_on_touch_input_event"]
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="canos_clear" to="." method="_on_canos_clear_area_entered"]

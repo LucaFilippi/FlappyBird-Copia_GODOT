@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx0qxqh0yug6t"]
+
+[ext_resource type="Texture2D" uid="uid://3apduka7j70k" path="res://assets/base.png" id="1_ho3dd"]
+[ext_resource type="Shader" path="res://scripts/floor.gdshader" id="1_tibao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0exqo"]
+shader = ExtResource("1_tibao")
+shader_parameter/speed = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_426tw"]
+size = Vector2(335, 110)
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="spr_floor" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0exqo")
+texture = ExtResource("1_ho3dd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_426tw")

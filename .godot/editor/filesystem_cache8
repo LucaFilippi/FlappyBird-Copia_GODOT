@@ -1,3 +1,24 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737686999
-icon.svg::CompressedTexture2D::8330494854366939378::1737686994::1737687001::1::::<><>::
+::res://::1737690410
+::res://assets/::1737687801
+background-day.png::CompressedTexture2D::3511614710459649892::1737687789::1737687801::1::::<><>::
+base.png::CompressedTexture2D::1966204800096319780::1737687789::1737687801::1::::<><>::
+Flapppppppy.txt::TextFile::-1::1737687789::0::1::::<><>::
+gameover.png::CompressedTexture2D::7236927719354350760::1737687789::1737687801::1::::<><>::
+icon.svg::CompressedTexture2D::8330494854366939378::1737686994::1737687801::1::::<><>::
+Kenney Blocks.ttf::FontFile::12232975769211149::1737687789::1737687801::1::::<><>::
+pipe-green.png::CompressedTexture2D::8209495335460085891::1737687789::1737687801::1::::<><>::
+taptap.png::CompressedTexture2D::8554124584396879575::1737687789::1737687801::1::::<><>::
+yellowbird-downflap.png::CompressedTexture2D::1754288823718406813::1737687789::1737687801::1::::<><>::
+yellowbird-midflap.png::CompressedTexture2D::3943199951740179498::1737687789::1737687801::1::::<><>::
+yellowbird-upflap.png::CompressedTexture2D::2461861837478968806::1737687789::1737687801::1::::<><>::
+::res://scenes/::1737694158
+main.tscn::PackedScene::8014206458803432856::1737693157::0::1::::<><>::uid://bqbb1tdnaygmu::::res://assets/background-day.png<>res://scripts/main.gd<>uid://dt4xggsrimvln::::res://assets/taptap.png<>uid://dbdve3nnsdxbs::::res://assets/gameover.png<>uid://f6qfqed8d3r::::res://assets/Kenney Blocks.ttf<>uid://dann4f58ri74a::::res://scenes/player_bird.tscn<>uid://cx0qxqh0yug6t::::res://scenes/floor.tscn
+player_bird.tscn::PackedScene::7186940381294608586::1737694181::0::1::::<><>::uid://y814687wtgcj::::res://assets/yellowbird-downflap.png<>res://scripts/player_bird.gd<>uid://bwgd6ryul0ga1::::res://assets/yellowbird-midflap.png<>uid://bbcsrfr5x8m67::::res://assets/yellowbird-upflap.png
+floor.tscn::PackedScene::6439807612412502345::1737691985::0::1::::<><>::uid://3apduka7j70k::::res://assets/base.png<>res://scripts/floor.gdshader
+canos.tscn::PackedScene::8971777386666727230::1737694209::0::1::::<><>::uid://do70gog0dffdr::::res://assets/pipe-green.png<>res://scenes/canos.gd
+canos.gd::GDScript::-1::1737694181::0::1::::<>Area2D<>::
+::res://scripts/::1737694158
+floor.gdshader::Shader::-1::1737694209::0::1::::<><>::
+player_bird.gd::GDScript::-1::1737693131::0::1::::<>CharacterBody2D<>::
+main.gd::GDScript::-1::1737692796::0::1::::<>Node2D<>::

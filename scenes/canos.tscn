@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0284lmemewhy"]
+
+[ext_resource type="Texture2D" uid="uid://do70gog0dffdr" path="res://assets/pipe-green.png" id="1_cswro"]
+[ext_resource type="Script" path="res://scripts/canos.gd" id="1_oa1c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at1tf"]
+size = Vector2(48, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gafm"]
+size = Vector2(48, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j3q0"]
+size = Vector2(16, 128)
+
+[sub_resource type="GDScript" id="GDScript_v72cm"]
+script/source = "extends CollisionShape2D
+"
+
+[node name="canos" type="Area2D"]
+script = ExtResource("1_oa1c0")
+
+[node name="decima" type="StaticBody2D" parent="."]
+position = Vector2(0, -304)
+rotation = 3.14159
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="decima"]
+texture = ExtResource("1_cswro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decima"]
+position = Vector2(-1.81599e-05, 0)
+shape = SubResource("RectangleShape2D_at1tf")
+
+[node name="debaixo" type="StaticBody2D" parent="."]
+position = Vector2(0, 304)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="debaixo"]
+texture = ExtResource("1_cswro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="debaixo"]
+shape = SubResource("RectangleShape2D_3gafm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_2j3q0")
+script = SubResource("GDScript_v72cm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

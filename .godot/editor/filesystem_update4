@@ -1,0 +1,11 @@
+res://scenes/player_bird.tscn
+res://scenes/main.tscn
+res://scenes/floor.tscn
+res://scripts/floor.gdshader
+res://scripts/player_bird.gd
+res://scripts/main.gd
+res://scenes/canos.tscn
+res://scripts/collision_shape_2d.gd
+res://scenes/canos.gd
+res://scripts/canos.gd
+res://scripts/singleton.gd
